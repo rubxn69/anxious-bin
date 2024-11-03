@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px; /* Add some padding */
+}
+
+#toggleButton {
+    padding: 15px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#toggleButton:hover {
+    background-color: #0056b3;
+}
+
+#status {
+    margin-top: 20px;
+    font-size: 28px;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    #toggleButton {
+        padding: 12px 24px; /* Smaller padding for mobile */
+        font-size: 20px; /* Smaller font size */
+    }
+
+    #status {
+        font-size: 24px; /* Smaller font size for status */
+    }
+}
