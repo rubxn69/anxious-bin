@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANXIOUS-DUSTBIN</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <button id="toggleButton">Toggle</button>
+    <div id="status">LID CLOSE</div>
+
+    <script>
+        const button = document.getElementById('toggleButton');
+        const statusDiv = document.getElementById('status');
+        let isOn = false;
+        let firstConfirmation = false;
+
+        button.addEventListener('click', () => {
+            if (!firstConfirmation) {
+                // First confirmation popup
+                const confirmToggle = confirm("Are you sure you want to toggle?");
+                if (confirmToggle) {
+                    firstConfirmation = true; // Set the flag to true
+                    // Second confirmation for toggling the state
+                    const confirmReallySure = confirm("Are you really sure?");
+                    if (confirmReallySure) {
+                        // Toggle the state
+                        isOn = !isOn; 
+                        statusDiv.textContent = isOn ? 'LID OPEN' : 'LID CLOSE'; // Update the display text
+                    } else {
+                        firstConfirmation = false; // Reset the flag if they cancel
+                    }
+                }
+            } else {
+                // If the first confirmation has already been acknowledged, show second confirmation
+                const confirmReallySure = confirm("Are you really sure?");
+                if (confirmReallySure) {
+                    // Toggle the state
+                    isOn = !isOn; 
+                    statusDiv.textContent = isOn ? 'LID OPEN' : 'LID CLOSE'; // Update the display text
+                } else {
+                    firstConfirmation = false; // Reset the flag if they cancel
+                }
+            }
+        });
+    </script>
+</body>
+</html>
